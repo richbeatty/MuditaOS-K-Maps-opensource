@@ -19,6 +19,9 @@ project(":data").projectDir = File(rootProject.projectDir, "compose/data")
 include(":common")
 project(":common").projectDir = File(rootProject.projectDir, "compose/common")
 
+include(":kompakt")
+project(":kompakt").projectDir = File(rootProject.projectDir, "compose/kompakt")
+
 File(rootProject.projectDir, "compose/screens")
     .listFiles()
     ?.forEach { moduleFile ->

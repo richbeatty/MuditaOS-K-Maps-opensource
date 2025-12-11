@@ -111,12 +111,15 @@ fun VerticalConfirmationDialog(
             )
             if (onCloseClick != null) {
                 KompaktIconButton(
-                    iconResId = R.drawable.ic_cancel,
-                    iconSize = iconSize,
-                    onClick =  onCloseClick,
-                    touchAreaPadding = PaddingValues(start = 8.dp),
-                )
-
+                    modifier = Modifier.padding(start = 8.dp),
+                    onClick = onCloseClick
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_cancel),
+                        contentDescription = null,
+                        modifier = Modifier.size(iconSize)
+                    )
+                }
             }
         }
         if (description != null) {

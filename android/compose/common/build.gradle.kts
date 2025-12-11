@@ -46,7 +46,7 @@ dependencies {
     api(project(mapOf("path" to ":MapApi")))
     api(project(":frontitude"))
 
-    api(libs.kompaktUI)
+    api(project(mapOf("path" to ":kompakt")))
     api(libs.material3)
     api(libs.composeFoundation)
     api(libs.composeNavigation)
