@@ -11,7 +11,6 @@ apply plugin: 'com.google.dagger.hilt.android'
 apply plugin: "org.jetbrains.kotlin.plugin.compose"
 
 apply from: rootProject.file("test-common.gradle")
-apply from: "$rootDir/gradle/sentry-config.gradle"
 
 android {
 	namespace "com.mudita.maps"
@@ -56,10 +55,11 @@ android {
 		warningsAsErrors false
 	}
 
-	buildFeatures {
-		compose true
-		aidl true
-	}
+        buildFeatures {
+                compose true
+                aidl true
+                buildConfig true
+        }
 
 	kotlinOptions {
 		jvmTarget = "17"

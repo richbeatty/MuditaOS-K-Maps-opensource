@@ -55,16 +55,14 @@ allprojects {
         maven {
             url 'https://developer.huawei.com/repo/'
         }
-
-        def muditaRepoUsername = getLocalProperty("mudita_repo_username") ?: System.getenv("ARTIFACTORY_USERNAME")
-        def muditaRepoPassword = getLocalProperty("mudita_repo_password") ?: System.getenv("ARTIFACTORY_PASSWORD")
         def muditaNexusRepoUrl = getLocalProperty("mudita_nexus_repo_url")
-
-        maven {
-            url = uri(muditaNexusRepoUrl)
-            credentials {
-                username = muditaRepoUsername?.toString()
-                password = muditaRepoPassword?.toString()
+        if (muditaNexusRepoUrl) {
+            maven {
+                url = uri(muditaNexusRepoUrl)
+                credentials {
+                    username = (getLocalProperty("mudita_repo_username") ?: System.getenv("ARTIFACTORY_USERNAME"))?.toString()
+                    password = (getLocalProperty("mudita_repo_password") ?: System.getenv("ARTIFACTORY_PASSWORD"))?.toString()
+                }
             }
         }
     }
