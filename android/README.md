@@ -16,3 +16,24 @@ sentry_project={sentry.project}
 sentry_org={sentry.org}
 sentry_auth_token={sentry.auth.token}
 ```
+
+### Building a debug APK without private credentials
+
+You can produce a debug APK using only public repositories. The private `local.properties` entries above are **not** required for this path.
+
+1. Install JDK 17 (example for Debian/Ubuntu):
+   ```bash
+   sudo apt-get update
+   sudo apt-get install -y openjdk-17-jdk
+   ```
+2. Make sure the Gradle wrapper is executable:
+   ```bash
+   chmod +x android/gradlew
+   ```
+3. Build the debug APK from the repository root (Gradle will honor `org.gradle.java.home` set to the installed JDK 17):
+   ```bash
+   cd android
+   JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64 ./gradlew assembleDebug --no-daemon --console=plain
+   ```
+
+When the build completes, the APK is located at `android/app/build/outputs/apk/debug/app-debug.apk`.
